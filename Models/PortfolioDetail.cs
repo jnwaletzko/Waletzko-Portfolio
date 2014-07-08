@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WaletzkoPortfolio.Models
 {
@@ -12,5 +13,7 @@ namespace WaletzkoPortfolio.Models
         public int ID { get; set; }
         public string Description { get; set; }
         public int PictureID { get; set; }
+        [NotMapped]
+        public virtual Picture Picture { get; set; }
     }
 }

@@ -17,7 +17,13 @@ namespace WaletzkoPortfolio.Controllers
         // GET: /PortfolioDetail/
         public ActionResult Index()
         {
-            return View(db.PortfolioDetails.ToList());
+            DbSet<PortfolioDetail> listOfPortfolioDetails = db.PortfolioDetails;
+            foreach (PortfolioDetail detail in listOfPortfolioDetails)
+            {
+                detail.Picture = db.Pictures.FirstOrDefault(p => p.ID == detail.PictureID);
+            }
+
+            return View(listOfPortfolioDetails);
         }
 
         // GET: /PortfolioDetail/Details/5
